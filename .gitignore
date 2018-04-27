@@ -24,3 +24,7 @@ hs_err_pid*
 .idea/
 
 test.java
+
+target/
+
+test/
