@@ -13,3 +13,13 @@ for(0, 10000000)加入列表来保证数据不重复；
 查看一个对象的使用内存情况，查看一个方法的调用时间。
 查看内存使用RamUsageEstimator类；
 查看调用时间使用System.currentTimeMillis();
+
+## MyBitSet
+来自己实现一个位向量，主要使用&, |等位操作以及数字的二进制表示。
+实现BitSet的几个接口：
+构造函数MyBitSet(int size)，可存储size个二进制位；
+.getSize()方法，返回size；
+.set(int index)，设置index为1;
+.clear(int index)，设置index为0;
+.get(int index)返回index位的值；
+.toString()，像一个数组一样打印；
