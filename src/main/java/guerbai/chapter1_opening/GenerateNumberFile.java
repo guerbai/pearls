@@ -3,6 +3,7 @@ package guerbai.chapter1_opening;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GenerateNumberFile {
@@ -12,7 +13,7 @@ public class GenerateNumberFile {
     public static void main(String[] args) throws IOException {
         // 生成1-10^7的int list.
         Random r = new Random();
-        ArrayList<Integer> s = new ArrayList<>();
+        List<Integer> s = new ArrayList<>();
         for (int i = 0; i < MAX_NUMBER; i++) {
             s.add(i+1);
         }
@@ -30,7 +31,7 @@ public class GenerateNumberFile {
             removeCount--;
             sLen--;
         }
-        PrintWriter writer = new PrintWriter("lot-number.txt", "UTF-8");
+        PrintWriter writer = new PrintWriter("lot-number1.txt", "UTF-8");
         while (sLen>0) {
             int removeIndex = r.nextInt(sLen);
             int removedItem = s.get(removeIndex);
@@ -40,5 +41,6 @@ public class GenerateNumberFile {
             System.out.println(sLen);
         }
         writer.close();
+        System.out.println(removeCount);
     }
 }
