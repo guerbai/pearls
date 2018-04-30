@@ -3,14 +3,14 @@ package guerbai.chapter1_opening;
 import org.apache.lucene.util.RamUsageEstimator;
 
 public class MyBitSet {
-    private static short ZERO = 1;
-    private static short ONE = 2;
-    private static short TWO = 4;
-    private static short THREE = 8;
-    private static short FOUR = 16;
-    private static short FIVE = 32;
-    private static short SIX = 64;
-    private static short SEVEN = 128;
+    private static int ZERO = 1;
+    private static int ONE = 2;
+    private static int TWO = 4;
+    private static int THREE = 8;
+    private static int FOUR = 16;
+    private static int FIVE = 32;
+    private static int SIX = 64;
+    private static int SEVEN = (byte) 128;
     private int size;
     private byte[] byteList;
 
@@ -31,22 +31,22 @@ public class MyBitSet {
     public void set(int index) {
         int byteIndex = index / 8;
         int byteRemainder = index % 8;
-        short mask = getMask(byteRemainder);
+        int mask = getMask(byteRemainder);
         byteList[byteIndex] = (byte) (byteList[byteIndex] | mask);
     }
 
     public void clear(int index) {
         int byteIndex = index / 8;
         int byteRemainder = index % 8;
-        short mask = getMask(byteRemainder);
+        int mask = getMask(byteRemainder);
         byteList[byteIndex] = (byte) (byteList[byteIndex] & ~mask);
     }
 
     public byte get(int index) {
         int byteIndex = index / 8;
         int byteRemainder = index % 8;
-        short mask = getMask(byteRemainder);
-        if ((short) (byteList[byteIndex] & mask) == mask) {
+        int mask = getMask(byteRemainder);
+        if ((byte) (byteList[byteIndex] & mask) == mask) {
             return 1;
         } else {
             return 0;
@@ -63,8 +63,8 @@ public class MyBitSet {
         return new String(s);
     }
 
-    private short getMask(int remainder) {
-        short mask;
+    private int getMask(int remainder) {
+        int mask;
         switch (remainder) {
             case 0:
                 mask = MyBitSet.ZERO;
@@ -99,25 +99,16 @@ public class MyBitSet {
 
     public static void main(String[] args) {
         MyBitSet mbs = new MyBitSet(10000000);
-        mbs.set(9);
-        System.out.println(mbs.get(9));
-        mbs.set(9);
-        System.out.println(mbs.get(9));
-        mbs.set(13);
-        mbs.set(188888);
-        mbs.set(1888889);
-        mbs.get(189888);
-        mbs.set(1888800);
-        mbs.set(20);
-        mbs.clear(9);
-        System.out.println(mbs.get(9));
-        mbs.clear(9);
-        System.out.println(mbs.get(9));
-//        System.out.println(mbs.toString());
-        System.out.println(mbs.get(12));
-        System.out.println(mbs.get(13));
-        System.out.println(mbs.getSize());
         System.out.println(RamUsageEstimator.sizeOf(mbs));
+        MyBitSet mbs2 = new MyBitSet(13);
+        System.out.println(mbs2);
+        mbs2.set(3);
+        System.out.println(mbs2);
+        mbs2.set(7);
+        System.out.println(mbs2);
+        mbs2.set(12);
+        System.out.println(mbs2);
+        mbs2.clear(7);
+        System.out.println(mbs2);
     }
-
 }
