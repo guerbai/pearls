@@ -23,3 +23,10 @@ for(0, 10000000)加入列表来保证数据不重复；
 .clear(int index)，设置index为0;
 .get(int index)返回index位的值；
 .toString()，像一个数组一样打印；
+
+## FortyTimesReadSort
+使用40趟读入文件算法实现该排序。
+逐行读入文件；
+直接使用Java内置的排序方法；
+将结果写入输入文件；
+将未含在读入文件内的1-10^7的数字打印出来;
