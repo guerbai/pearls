@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static guerbai.util.Print.print;
+
 public class LibSort {
     public static void main(String[] args) throws IOException{
         long startAt = System.currentTimeMillis();
@@ -26,6 +28,6 @@ public class LibSort {
         fileWriter.close();
         br.close();
         long endAt = System.currentTimeMillis();
-        System.out.println("Program cost time: " + (float)(endAt-startAt)/1000 + 's');
+        print("Program cost time: " + (float)(endAt-startAt)/1000 + 's');
     }
 }

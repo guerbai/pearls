@@ -33,3 +33,7 @@ for(0, 10000000)加入列表来保证数据不重复；
 
 ## BitSort
 使用MyBitSet来实现基于位图的磁盘文件排序，基于以上，编写这一程序已非常简单；
+
+## LibSort
+使用Java提供的Collections.sort()方法对读入内存的所有number进行排序。
+课后练习1。

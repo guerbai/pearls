@@ -5,10 +5,12 @@ import org.apache.lucene.util.RamUsageEstimator;
 import java.util.ArrayList;
 import java.util.BitSet;
 
+import static guerbai.util.Print.print;
+
 public class CheckSpaceAndTime {
 
     public static void main(String[] args) {
-        System.out.println("Start at: " + System.currentTimeMillis());
+        print("Start at: " + System.currentTimeMillis());
         ArrayList<Integer> s = new ArrayList<>();
         for (int i=0; i<10000000; i++) {
             s.add(i);
@@ -18,9 +20,9 @@ public class CheckSpaceAndTime {
             sss[i] = i;
         }
         BitSet ss = new BitSet(10000000);
-        System.out.println("ArrayList cost memory: " + RamUsageEstimator.sizeOf(s) + "bytes.");
-        System.out.println("BitSet cost memory: " + RamUsageEstimator.sizeOf(ss) + "bytes.");
-        System.out.println("List cost memory: " + RamUsageEstimator.sizeOf(sss) + "bytes.");
-        System.out.println("End at: " + System.currentTimeMillis());
+        print("ArrayList cost memory: " + RamUsageEstimator.sizeOf(s) + "bytes.");
+        print("BitSet cost memory: " + RamUsageEstimator.sizeOf(ss) + "bytes.");
+        print("List cost memory: " + RamUsageEstimator.sizeOf(sss) + "bytes.");
+        print("End at: " + System.currentTimeMillis());
     }
 }

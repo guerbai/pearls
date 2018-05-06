@@ -9,10 +9,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static guerbai.util.Print.print;
+
 public class FortyTimesReadSort {
 
     public static void main(String[] args) throws IOException{
-        System.out.println("Start at: " + System.currentTimeMillis());
+        print("Start at: " + System.currentTimeMillis());
         String fileName = "./lot-number.txt";
         String targetFileName = "./sorted-number.txt";
         FileWriter fileWriter = new FileWriter(targetFileName);
@@ -38,7 +40,7 @@ public class FortyTimesReadSort {
             }
             br.close();
             Arrays.sort(oneTimeArray);
-            System.out.println("ArrayList cost memory: " + RamUsageEstimator.sizeOf(oneTimeArray) + "bytes.");
+            print("ArrayList cost memory: " + RamUsageEstimator.sizeOf(oneTimeArray) + "bytes.");
             for (int j=0; j<arrayIndex; j++) {
                 fileWriter.append(Integer.toString(oneTimeArray[j])).append(String.valueOf('\n'));
                 while (oneTimeArray[j]!=count) {
@@ -48,8 +50,8 @@ public class FortyTimesReadSort {
                 count++;
             }
         }
-        System.out.println(missNumber);
+        print(missNumber);
         fileWriter.close();
-        System.out.println("End at: " + System.currentTimeMillis());
+        print("End at: " + System.currentTimeMillis());
     }
 }

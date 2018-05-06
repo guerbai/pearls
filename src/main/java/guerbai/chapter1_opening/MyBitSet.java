@@ -2,6 +2,8 @@ package guerbai.chapter1_opening;
 
 import org.apache.lucene.util.RamUsageEstimator;
 
+import static guerbai.util.Print.print;
+
 public class MyBitSet {
     private static int ZERO = 1;
     private static int ONE = 2;
@@ -57,7 +59,7 @@ public class MyBitSet {
         StringBuffer s = new StringBuffer();
         s.append('[');
         for (int i=0; i<size; i++) {
-            s.append(get(i)+", ");
+            s.append(get(i)).append(", ");
         }
         s.append(']');
         return new String(s);
@@ -99,16 +101,16 @@ public class MyBitSet {
 
     public static void main(String[] args) {
         MyBitSet mbs = new MyBitSet(10000000);
-        System.out.println(RamUsageEstimator.sizeOf(mbs));
+        print(RamUsageEstimator.sizeOf(mbs));
         MyBitSet mbs2 = new MyBitSet(13);
-        System.out.println(mbs2);
+        print(mbs2);
         mbs2.set(3);
-        System.out.println(mbs2);
+        print(mbs2);
         mbs2.set(7);
-        System.out.println(mbs2);
+        print(mbs2);
         mbs2.set(12);
-        System.out.println(mbs2);
+        print(mbs2);
         mbs2.clear(7);
-        System.out.println(mbs2);
+        print(mbs2);
     }
 }

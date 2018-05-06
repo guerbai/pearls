@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static guerbai.util.Print.print;
+
 public class GenerateNumberFile {
 
     private final static int MAX_NUMBER = 10000000;
@@ -17,17 +19,17 @@ public class GenerateNumberFile {
         for (int i = 0; i < MAX_NUMBER; i++) {
             s.add(i+1);
         }
-        // System.out.println(s.size());
+        // print(s.size());
         int sLen = s.size();
         // 去掉20~50个元素.
         int removeCount = r.nextInt( 30) + 20; // 生成20~49之间的一个整数；
-        System.out.println("now we remove " + removeCount + " item");
+        print("now we remove " + removeCount + " item");
         while (removeCount>0) {
             int removeIndex = r.nextInt(sLen);
-            // System.out.println("remove index " + removeIndex);
-            // System.out.println("remove item " + s.get(removeIndex));
+            // print("remove index " + removeIndex);
+            // print("remove item " + s.get(removeIndex));
             s.remove(removeIndex);
-            // System.out.println("now item at index " + s.get(removeIndex));
+            // print("now item at index " + s.get(removeIndex));
             removeCount--;
             sLen--;
         }
@@ -38,9 +40,9 @@ public class GenerateNumberFile {
             writer.println(removedItem);
             s.remove(removeIndex);
             sLen--;
-            System.out.println(sLen);
+            print(sLen);
         }
         writer.close();
-        System.out.println(removeCount);
+        print(removeCount);
     }
 }
