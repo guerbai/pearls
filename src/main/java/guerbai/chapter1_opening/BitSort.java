@@ -9,15 +9,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static guerbai.util.Print.print;
+import static java.lang.System.currentTimeMillis;
 
 public class BitSort {
 
     public static void main(String[] args) throws IOException {
-        long startAt = System.currentTimeMillis();
-        String fileName = "./lot-number.txt";
-        String targetFileName = "./sorted-number.txt";
-        FileWriter fileWriter = new FileWriter(targetFileName);
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        long startAt = currentTimeMillis();
+        FileWriter fileWriter = new FileWriter("./sorted-number.txt");
+        BufferedReader br = new BufferedReader(new FileReader("./lot-number1.txt"));
         String line;
         MyBitSet s = new MyBitSet(10000000);
         ArrayList<Integer> missNumber = new ArrayList<>();
@@ -35,7 +34,7 @@ public class BitSort {
         }
         fileWriter.close();
         print("Miss number is: " + missNumber);
-        long endAt = System.currentTimeMillis();
+        long endAt = currentTimeMillis();
         print("Program cost time: " + (float)(endAt-startAt)/1000 + 's');
     }
 }

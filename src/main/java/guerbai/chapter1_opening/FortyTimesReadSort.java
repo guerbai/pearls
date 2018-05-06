@@ -14,10 +14,8 @@ import static guerbai.util.Print.print;
 public class FortyTimesReadSort {
 
     public static void main(String[] args) throws IOException{
-        print("Start at: " + System.currentTimeMillis());
-        String fileName = "./lot-number.txt";
-        String targetFileName = "./sorted-number.txt";
-        FileWriter fileWriter = new FileWriter(targetFileName);
+        long startAt = System.currentTimeMillis();
+        FileWriter fileWriter = new FileWriter("./sorted-number.txt");
         int count = 1;
         ArrayList<Integer> missNumber = new ArrayList<>();
 
@@ -28,7 +26,7 @@ public class FortyTimesReadSort {
             for (int initIndex=0; initIndex<oneTimeArray.length; initIndex++) {
                 oneTimeArray[initIndex] = 10000001;
             }
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            BufferedReader br = new BufferedReader(new FileReader("./lot-number.txt"));
             String line;
             int arrayIndex = 0;
             while ((line = br.readLine()) != null) {
@@ -50,8 +48,9 @@ public class FortyTimesReadSort {
                 count++;
             }
         }
-        print(missNumber);
+        print("miss number are: " + missNumber);
         fileWriter.close();
-        print("End at: " + System.currentTimeMillis());
+        long endAt = System.currentTimeMillis();
+        print("Program cost time: " + (float)(endAt-startAt)/1000 + 's');
     }
 }

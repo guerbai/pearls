@@ -19,17 +19,13 @@ public class GenerateNumberFile {
         for (int i = 0; i < MAX_NUMBER; i++) {
             s.add(i+1);
         }
-        // print(s.size());
         int sLen = s.size();
         // 去掉20~50个元素.
         int removeCount = r.nextInt( 30) + 20; // 生成20~49之间的一个整数；
         print("now we remove " + removeCount + " item");
         while (removeCount>0) {
             int removeIndex = r.nextInt(sLen);
-            // print("remove index " + removeIndex);
-            // print("remove item " + s.get(removeIndex));
             s.remove(removeIndex);
-            // print("now item at index " + s.get(removeIndex));
             removeCount--;
             sLen--;
         }

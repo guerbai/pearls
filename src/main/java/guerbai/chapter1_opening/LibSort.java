@@ -12,12 +12,10 @@ import static guerbai.util.Print.print;
 public class LibSort {
     public static void main(String[] args) throws IOException{
         long startAt = System.currentTimeMillis();
-        String fileName = "./lot-number.txt";
-        String targetFileName = "./sorted-number2.txt";
-        FileWriter fileWriter = new FileWriter(targetFileName);
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        String line;
+        BufferedReader br = new BufferedReader(new FileReader("./lot-number.txt"));
+        FileWriter fileWriter = new FileWriter("./sorted-number2.txt");
         ArrayList<Integer> numberArray = new ArrayList<>();
+        String line;
         while ((line = br.readLine()) != null) {
             numberArray.add(Integer.parseInt(line));
         }

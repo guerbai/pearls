@@ -101,7 +101,7 @@ public class MyBitSet {
 
     public static void main(String[] args) {
         MyBitSet mbs = new MyBitSet(10000000);
-        print(RamUsageEstimator.sizeOf(mbs));
+        print("10000000 size BitSet cost: " + RamUsageEstimator.sizeOf(mbs) + "bytes.");
         MyBitSet mbs2 = new MyBitSet(13);
         print(mbs2);
         mbs2.set(3);

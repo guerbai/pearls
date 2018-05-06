@@ -37,3 +37,8 @@ for(0, 10000000)加入列表来保证数据不重复；
 ## LibSort
 使用Java提供的Collections.sort()方法对读入内存的所有number进行排序。
 课后练习1。
+
+## BetterRandomNumber
+更高效地生成小于n而不重复的随机数。
+random 10^7次，下标j从0-10^7，每次random出一个下标，将j下标与randomIndex的数字互换。
+增加check()方法检验number是否符合要求。

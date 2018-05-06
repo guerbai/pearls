@@ -10,7 +10,7 @@ import static guerbai.util.Print.print;
 public class CheckSpaceAndTime {
 
     public static void main(String[] args) {
-        print("Start at: " + System.currentTimeMillis());
+        long startAt = System.currentTimeMillis();
         ArrayList<Integer> s = new ArrayList<>();
         for (int i=0; i<10000000; i++) {
             s.add(i);
@@ -23,6 +23,7 @@ public class CheckSpaceAndTime {
         print("ArrayList cost memory: " + RamUsageEstimator.sizeOf(s) + "bytes.");
         print("BitSet cost memory: " + RamUsageEstimator.sizeOf(ss) + "bytes.");
         print("List cost memory: " + RamUsageEstimator.sizeOf(sss) + "bytes.");
-        print("End at: " + System.currentTimeMillis());
+        long endAt = System.currentTimeMillis();
+        print("Program cost time: " + (float)(endAt-startAt)/1000 + 's');
     }
 }
