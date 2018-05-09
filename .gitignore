@@ -22,3 +22,12 @@
 hs_err_pid*
 
 .idea/
+
+test.java
+
+target/
+
+src/test/
+
+sorted-number.txt
+*.txt
