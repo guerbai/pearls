@@ -13,26 +13,6 @@ public class BetterRandomNumber {
 
     private final static int MAX_NUMBER = 10000000;
 
-    private static void check() throws IOException{
-        BufferedReader br = new BufferedReader(new FileReader("./lot-number1.txt"));
-        int[] s = new int[MAX_NUMBER];
-        String line;
-        while ((line = br.readLine()) != null) {
-            int number = Integer.parseInt(line);
-            if (number>MAX_NUMBER || number<0) {
-                print("Number not in bound." + number);
-                System.exit(1);
-            }
-            if (s[number-1]!=0) {
-                print("multiple number " + number);
-                System.exit(2);
-
-            }
-            s[number-1] = number;
-        }
-        print("ok number file!");
-    }
-
     public static void main(String[] args) throws IOException {
         long startAt = currentTimeMillis();
         Random r = new Random(47);
@@ -55,6 +35,5 @@ public class BetterRandomNumber {
         writer.close();
         long endAt = currentTimeMillis();
         print("Program cost time: " + (float) (endAt - startAt) / 1000 + "s");
-        BetterRandomNumber.check();
     }
 }

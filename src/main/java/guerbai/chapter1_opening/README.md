@@ -43,6 +43,9 @@ for(0, 10000000)加入列表来保证数据不重复；
 random 10^7次，下标j从0-10^7，每次random出一个下标，将j下标与randomIndex的数字互换。
 增加check()方法检验number是否符合要求。
 
+## OnlyOneMBSort
+读两次文件，一次处理一半。
+
 ## DelayInitialBitSet
 课后练习9，将初始化BitSet某一项为0，推迟到对该项的第一次访问时；
 虽然Java本身会初始化为0，但这里依然实现它，说明是看懂了的；
