@@ -2,7 +2,6 @@ package guerbai.util;
 // Copy from https://github.com/BruceEckel/TIJ4-code for easy print.
 
 import java.io.PrintStream;
-import java.util.List;
 
 public class Print {
 
@@ -28,5 +27,10 @@ public class Print {
         for (T t: v) {
             print(t);
         }
+    }
+
+    public static void main(String[] args) {
+        Character[] i = {'a', 'b', 'c'};
+        printList(i);
     }
 }

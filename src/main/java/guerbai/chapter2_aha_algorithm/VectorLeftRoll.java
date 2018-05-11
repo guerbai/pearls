@@ -3,7 +3,6 @@ package guerbai.chapter2_aha_algorithm;
 import java.util.Arrays;
 
 import static guerbai.util.Print.print;
-import static guerbai.util.Print.printList;
 import static java.lang.System.currentTimeMillis;
 
 public class VectorLeftRoll {
@@ -41,6 +40,32 @@ public class VectorLeftRoll {
         return rolled;
     }
 
+    public char[] acrobatics(char[] v, int rollDistance) {
+        int len = v.length;
+        char[] rolled = new char[len];
+        int dealCount = 0;
+        int roundFrom = 0;
+        while (dealCount<len) {
+            char t = v[roundFrom];
+            int fromIndex = (roundFrom + rollDistance) % len;
+            int toIndex = roundFrom;
+            while (fromIndex!=roundFrom) {
+                if (rolled[toIndex]=='\u0000') {
+                    dealCount += 1;
+                }
+                rolled[toIndex] = v[fromIndex];
+                fromIndex = (fromIndex + rollDistance) % len;
+                toIndex = (toIndex + rollDistance) % len;
+            }
+            if (rolled[toIndex]=='\u0000') {
+                dealCount += 1;
+            }
+            rolled[toIndex] = t;
+            roundFrom += 1;
+        }
+        return rolled;
+    }
+
     public static void main(String[] args) {
         long startAt = currentTimeMillis();
         VectorLeftRoll ins = new VectorLeftRoll();
@@ -53,7 +78,8 @@ public class VectorLeftRoll {
             v[i+26]=(char)('A'+i);
         }
 //        char[] rolled = ins.iSpaceRoll(v, 26);
-        char[] rolled = ins.moveOneMultiPerRoll(v, 26);
+//        char[] rolled = ins.moveOneMultiPerRoll(v, 26);
+        char[] rolled = ins.acrobatics(v, 29);
         print(Arrays.toString(rolled));
         long endAt = currentTimeMillis();
         print("Program cost time: " + (float) (endAt - startAt) / 1000 + 's');
