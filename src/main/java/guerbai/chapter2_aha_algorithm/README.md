@@ -10,6 +10,7 @@
 书中提到的几个向量左旋转的实现。
 iSpaceRoll()，使用i个额外的内存空间的解法；
 moveOnePerRoll(), 每次移动旋转一个位置；
-acrobatics(), 杂技算法；
+acrobatics(), 杂技算法，想象成一条首尾相接的环带；
+recursionRoll(), 
 rollHand(), 翻手算法。
 当n与i达到一定量时，检测程序运行时间与所占额外空间。
