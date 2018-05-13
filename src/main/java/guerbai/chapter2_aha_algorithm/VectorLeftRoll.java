@@ -3,6 +3,7 @@ package guerbai.chapter2_aha_algorithm;
 import java.util.Arrays;
 
 import static guerbai.util.Print.print;
+import static java.lang.Math.min;
 import static java.lang.System.currentTimeMillis;
 
 public class VectorLeftRoll {
@@ -61,6 +62,37 @@ public class VectorLeftRoll {
         }
     }
 
+    private void swap(char[] v, int frontIndex, int afterIndex, int m) {
+        for (int i=0; i<m; i++) {
+            char cache = v[frontIndex+i];
+            v[frontIndex+i] = v[afterIndex+i];
+            v[afterIndex+i] = cache;
+        }
+    }
+
+    public void recursionRoll(char[] v, int rollDistance) {
+        if (rollDistance==0 || rollDistance==v.length) {
+            return;
+        }
+        int unDoneStartIndex = 0;
+        int unDoneEndIndex = v.length-1;
+        int leftLength = rollDistance;
+        int rightLength = v.length-rollDistance;
+        while (leftLength!=rightLength) {
+            if (leftLength<=rightLength) {
+                swap(v, unDoneStartIndex, unDoneEndIndex-leftLength+1, leftLength);
+                unDoneEndIndex-=leftLength;
+                rightLength-=leftLength;
+            } else {
+                swap(v, unDoneStartIndex, unDoneEndIndex-rightLength+1, rightLength);
+                unDoneStartIndex+=rightLength;
+                leftLength-=rightLength;
+            }
+        }
+        swap(v, unDoneStartIndex, unDoneEndIndex-leftLength+1, leftLength);
+    }
+
+
     public void rollHand(char[] v, int rollDistance) {
         reverse(v, 0, rollDistance-1);
         reverse(v, rollDistance, v.length-1);
@@ -92,6 +124,7 @@ public class VectorLeftRoll {
 //        ins.moveOneMultiPerRoll(v, 13);
 //        ins.acrobatics(v, 52);
 //        ins.rollHand(v, 17);
+        ins.recursionRoll(v, 37);
         print(Arrays.toString(v));
         long endAt = currentTimeMillis();
         print("Program cost time: " + (float) (endAt - startAt) / 1000 + 's');
