@@ -28,7 +28,7 @@ public class BetterRandomNumber {
             s[randomIndex] = temp;
         }
         print("We remove " + removeCount + " numbers");
-        PrintWriter writer = new PrintWriter("lot-number1.txt", "UTF-8");
+        PrintWriter writer = new PrintWriter("lot-number2.txt", "UTF-8");
         for (int k=0; k<MAX_NUMBER-removeCount; k++) {
             writer.println(s[k]);
         }
