@@ -17,3 +17,8 @@ rollHand(), 翻手算法。
 
 ## Anagram
 变位词程序。
+使用预处理程序将anagramDict以HashMap存入内存，习题1的二分搜索并不需要使用，O(1)就可取到变位词。
+
+## FindMultipleInt
+寻找4.3*10^9个int中的一个重复整数。
+依然像BitUpBinaryUp一样采取降维操作，代码亦与其基本相同。

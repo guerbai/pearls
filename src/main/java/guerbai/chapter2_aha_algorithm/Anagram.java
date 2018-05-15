@@ -29,6 +29,16 @@ public class Anagram {
         return stringBuilder.toString();
     }
 
+    // 习题1，采用hashmap来保存标识，则二分什么的是不存在的，直接O(1)找到变位词.
+    public static void findAnagram(String word, Map<String, ArrayList<String>> anagramDict) {
+        String identifier = Anagram.toLetterMark(word);
+        if (anagramDict.containsKey(identifier)) {
+            print(word + "'s anagram are: " + anagramDict.get(identifier));
+        } else {
+            print("we don't have anagram of word: " + word);
+        }
+    }
+
     public static void main(String[] args) {
         long startAt = currentTimeMillis();
         ArrayList<String> dict = new ArrayList<>(Arrays.asList(
@@ -42,6 +52,10 @@ public class Anagram {
             result.get(identifier).add(word);
         }
         print(result);
+        String word1 = "span";
+        String word2 = "spang";
+        Anagram.findAnagram(word1, result);
+        Anagram.findAnagram(word2, result);
         long endAt = currentTimeMillis();
         print("Program cost time: " + (float) (endAt - startAt) / 1000 + 's');
     }
