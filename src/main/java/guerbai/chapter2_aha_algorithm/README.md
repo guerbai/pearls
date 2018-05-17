@@ -15,9 +15,10 @@ recursionRoll(),
 rollHand(), 翻手算法。
 当n与i达到一定量时，检测程序运行时间与所占额外空间。
 
-## Anagram
+## Identifier
 变位词程序。
 使用预处理程序将anagramDict以HashMap存入内存，习题1的二分搜索并不需要使用，O(1)就可取到变位词。
+习题6同样。
 
 ## FindMultipleInt
 寻找4.3*10^9个int中的一个重复整数。
