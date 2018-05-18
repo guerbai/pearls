@@ -23,3 +23,13 @@ rollHand(), 翻手算法。
 ## FindMultipleInt
 寻找4.3*10^9个int中的一个重复整数。
 依然像BitUpBinaryUp一样采取降维操作，代码亦与其基本相同。
+
+## TransposeMatrix
+习题7，只看课后的答案刚开始怎么也不理解这题怎么个解法。
+直到在[github](https://github.com/harrifeng/MyWay/blob/master/NOTE/ProgrammingPearls_2.org)看到了一个图示加讲解才被该解法惊到。
+还有一点容易理解错，先对列排序再对行排序是说，对列排序后，在所有列相同的items中对行排序(而这一点，往往在第一次排序中即已处理好了)。
+该类的编写中有范型的处理以及sort时根据匿名函数的使用。
+
+## SmallSubSet
+习题8，提供时间复杂度为O(n)的算法实现。
+使用选择算法，待到习题11.9时再来更新。

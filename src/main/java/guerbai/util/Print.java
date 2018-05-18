@@ -2,6 +2,16 @@ package guerbai.util;
 // Copy from https://github.com/BruceEckel/TIJ4-code for easy print.
 
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+
+class Item {
+    int i;
+    Item(int i) {
+        this.i = i;
+    }
+}
 
 public class Print {
 
@@ -29,8 +39,26 @@ public class Print {
         }
     }
 
+    public static <T> void printMatrix(T[][] m) {
+        for (T[] list: m) {
+            for (T i: list) {
+                print(i);
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        Character[] i = {'a', 'b', 'c'};
-        printList(i);
+        ArrayList<Item> s = new ArrayList<>();
+        s.add(new Item(9));
+        s.add(new Item(3));
+        s.add(new Item(7));
+        for (int i=0; i<s.size(); i++) {
+            print(s.get(i).i);
+        }
+        s.sort(Comparator.comparingInt(a -> a.i));
+        for (int i=0; i<s.size(); i++) {
+            print(s.get(i).i);
+        }
+
     }
 }
