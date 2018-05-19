@@ -16,7 +16,7 @@ public class BitSort {
     public static void main(String[] args) throws IOException {
         long startAt = currentTimeMillis();
         FileWriter fileWriter = new FileWriter("./sorted-number.txt");
-        BufferedReader br = new BufferedReader(new FileReader("./lot-number1.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("./lot-number.txt"));
         String line;
         MyBitSet s = new MyBitSet(10000000);
         ArrayList<Integer> missNumber = new ArrayList<>();

@@ -5,14 +5,6 @@ import org.apache.lucene.util.RamUsageEstimator;
 import static guerbai.util.Print.print;
 
 public class MyBitSet {
-    private static int ZERO = 1;
-    private static int ONE = 2;
-    private static int TWO = 4;
-    private static int THREE = 8;
-    private static int FOUR = 16;
-    private static int FIVE = 32;
-    private static int SIX = 64;
-    private static int SEVEN = (byte) 128;
     private int size;
     private byte[] byteList;
 
@@ -48,10 +40,10 @@ public class MyBitSet {
         int byteIndex = index / 8;
         int byteRemainder = index % 8;
         int mask = getMask(byteRemainder);
-        if ((byte) (byteList[byteIndex] & mask) == mask) {
-            return 1;
-        } else {
+        if ((byte) (byteList[byteIndex] & mask) == 0) {
             return 0;
+        } else {
+            return 1;
         }
     }
 
@@ -66,37 +58,7 @@ public class MyBitSet {
     }
 
     private int getMask(int remainder) {
-        int mask;
-        switch (remainder) {
-            case 0:
-                mask = MyBitSet.ZERO;
-                break;
-            case 1:
-                mask = MyBitSet.ONE;
-                break;
-            case 2:
-                mask = MyBitSet.TWO;
-                break;
-            case 3:
-                mask = MyBitSet.THREE;
-                break;
-            case 4:
-                mask = MyBitSet.FOUR;
-                break;
-            case 5:
-                mask = MyBitSet.FIVE;
-                break;
-            case 6:
-                mask = MyBitSet.SIX;
-                break;
-            case 7:
-                mask = MyBitSet.SEVEN;
-                break;
-            default:
-                mask = MyBitSet.ZERO;
-                break;
-        }
-        return mask;
+        return 1<<remainder;
     }
 
     public static void main(String[] args) {

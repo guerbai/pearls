@@ -29,5 +29,5 @@ target/
 
 src/test/
 
-sorted-number.txt
 *.txt
+src/main/java/guerbai/App.java
