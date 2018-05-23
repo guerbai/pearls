@@ -29,6 +29,12 @@ public class MyBitSet {
         byteList[byteIndex] = (byte) (byteList[byteIndex] | mask);
     }
 
+    public void setMultiple(int... args) {
+        for (int index: args) {
+            set(index);
+        }
+    }
+
     public void clear(int index) {
         int byteIndex = index / 8;
         int byteRemainder = index % 8;
