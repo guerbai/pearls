@@ -30,4 +30,3 @@ target/
 src/test/
 
 *.txt
-src/main/java/guerbai/App.java
