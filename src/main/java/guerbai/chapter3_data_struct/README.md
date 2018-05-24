@@ -19,5 +19,11 @@
 
 习题5，这题实在没什么意思，直接使用Java String的endsWith()即可解决.
 
+# UseJavaStringTemplate
+习题6，这题是让读者使用所谓string template，这个东西在Python与JS中已经内置，或者有更成熟的包比如jinja可以使用。
+这里没有必要再去重新用Java实现一个string template，决定尝试使用一下现有的apache的包。
+
+习题7，比较有意思，网上找到了一点有价值的[讨论](https://github.com/filipegoncalves/codinghighway/tree/master/ProgrammingPearls/Column3/3.7.7)。
+
 # LEDNumber
 习题8，这题明显不难。
