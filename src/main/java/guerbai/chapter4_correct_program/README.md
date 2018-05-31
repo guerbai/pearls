@@ -2,7 +2,9 @@
 
 # BinarySearch
 通过使用书中内容的伪码编写出正确的二分搜索程序.
-recursionBinarySearch(), 对应习题3.
+recursionBinarySearch(int[] x, int t, int l, int r), 对应习题3.
+recursionBinarySearch(int[] x, int t), 对应习题11，利用Java的重构功能.
+用到了Arrays.copyOfRange(x, mid+1, r+1)来实现slice，极易出现off-by-one的错误，千万小心.
 
 习题1、2、8的解答依书中引导留到9.3节处理。
 
