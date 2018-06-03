@@ -1,11 +1,46 @@
 package guerbai.chapter5_programming_trifles;
 
-import java.util.Scanner;
+import java.util.*;
 
 import static guerbai.util.Print.print;
 import static java.lang.System.currentTimeMillis;
 
 public class EnsureCorrectBinarySearch {
+
+    private static ArrayList<Integer> randomOrderList1= new ArrayList<>();
+    private static ArrayList<Integer> randomOrderList10 = new ArrayList<>();
+    private static ArrayList<Integer> randomOrderList100 = new ArrayList<>();
+    private static ArrayList<Integer> randomOrderList1000 = new ArrayList<>();
+    private static ArrayList<Integer> randomOrderList10000 = new ArrayList<>();
+    private static Map<Integer, ArrayList<Integer>> numTestsDict = new HashMap<>();
+
+    static {
+        for (int i=0; i<10000000; i++) {
+            randomOrderList1.add(i);
+        }
+        for (int i=0; i<1000000; i++) {
+            randomOrderList10.add(i);
+        }
+        for (int i=0; i<100000; i++) {
+            randomOrderList100.add(i);
+        }
+        for (int i=0; i<10000; i++) {
+            randomOrderList1000.add(i);
+        }
+        for (int i=0; i<1000; i++) {
+            randomOrderList10000.add(i);
+        }
+        Collections.shuffle(randomOrderList1);
+        Collections.shuffle(randomOrderList10);
+        Collections.shuffle(randomOrderList100);
+        Collections.shuffle(randomOrderList1000);
+        Collections.shuffle(randomOrderList10000);
+        numTestsDict.put(1, randomOrderList1);
+        numTestsDict.put(10, randomOrderList10);
+        numTestsDict.put(100, randomOrderList100);
+        numTestsDict.put(1000, randomOrderList1000);
+        numTestsDict.put(10000, randomOrderList10000);
+    }
 
     private static boolean sorted(int[] s) {
         for (int i=0; i<s.length-1; i++) {
@@ -15,7 +50,6 @@ public class EnsureCorrectBinarySearch {
         }
         return true;
     }
-
 
     static int binarySearch(int[] s, int t) {
 //        assert sorted(s);
@@ -77,7 +111,8 @@ public class EnsureCorrectBinarySearch {
         }
     }
 
-    private static void assureLogN() {
+    private static void assureLogN(int type) {
+        // type 1: search from 1 to n, type 2: search with shuffle order.
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int numtests  = scanner.nextInt();
@@ -88,8 +123,15 @@ public class EnsureCorrectBinarySearch {
             }
             long startAt = currentTimeMillis();
             for (int i=0; i<numtests; i++) {
-                for (int j=0; j<n; j++) {
-                    assert binarySearch(s, j) == j;
+                if (type==1) {
+                    for (int j=0; j<n; j++) {
+                        assert binarySearch(s, j) == j;
+                    }
+                }
+                if (type==2) {
+                    for (int j: numTestsDict.get(numtests)) {
+                        assert binarySearch(s, j) == j;
+                    }
                 }
             }
             long endAt = currentTimeMillis();
@@ -118,7 +160,13 @@ public class EnsureCorrectBinarySearch {
 //         a = 0.22270000000000006
 //         b = 0.019356228721193993
 //        执行binarySearch的次数一样均为10000000次.
-        assureLogN();
+//        assureLogN(1);
+//        1000 10000 cost time: 0.564s
+//        10000 1000 cost time: 0.888s
+//        100000 100 cost time: 1.46s
+//        1000000 10 cost time: 2.878s
+//        10000000 1 cost time: 5.553s
+        assureLogN(2);
 
         long endAt = currentTimeMillis();
         print("Program cost time: " + (float) (endAt - startAt) / 1000 + 's');
