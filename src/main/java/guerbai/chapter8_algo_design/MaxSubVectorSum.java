@@ -38,15 +38,46 @@ public class MaxSubVectorSum {
         return max;
     }
 
+    private static int partionSolution(int[] v) {
+        return partionSolutionRecursion(v, 0, v.length-1);
+    }
+
+    private static int partionSolutionRecursion(int[] v, int l, int r) {
+        if (l>r) return 0;
+        if (l==r) return Math.max(v[l], 0);
+        int m = (l + r) / 2;
+        int lmax = 0;
+        int rmax = 0;
+        int sum = 0;
+        for (int i=m; i>=l; i--) {
+            sum += v[i];
+            lmax = Math.max(sum, lmax);
+        }
+        sum = 0;
+        for (int i=m+1; i<=r; i++) {
+            sum += v[i];
+            rmax = Math.max(sum, rmax);
+        }
+        return Math.max(lmax+rmax, Math.max(partionSolutionRecursion(v, l, m), partionSolutionRecursion(v, m+1, r)));
+    }
+
     public static void main(String[] args) {
         long startAt = currentTimeMillis();
 
         int[] v = {31, -41, 59, 26, -53, 58, 97, -93, -23, 84};
         print(plainSolution1(v));
         print(plainSolution2(v));
+        print(partionSolution(v));
         int[] v1 = {-31, -41, -59, -26, -53, -58, -2, -93, -23, 84};
         print(plainSolution1(v1));
         print(plainSolution2(v1));
+        print(partionSolution(v1));
+        int[] v2 = {-31, -41, 59, 26, -53, 58, -2, 93, 23, 84};
+        print(partionSolution(v2));
+        int[] v3 = {};
+        print(partionSolution(v3));
+        int[] v4 = {-1};
+        print(partionSolution(v4));
 
         long endAt = currentTimeMillis();
         print("Program cost time: " + (float) (endAt - startAt) / 1000 + 's');
