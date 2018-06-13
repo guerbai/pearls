@@ -3,3 +3,4 @@
 # MaxSubVectorSum
 plainSolution1与plainSolution2两个平凡算法。
 partionSolution，分治算法。
+scanLinearSolution，O(n)时间复杂度算法。

@@ -1,9 +1,6 @@
 package guerbai.chapter8_algo_design;
 
-import guerbai.util.Print;
-
 import static guerbai.util.Print.print;
-import static guerbai.util.Print.printnb;
 import static java.lang.System.currentTimeMillis;
 
 public class MaxSubVectorSum {
@@ -61,6 +58,17 @@ public class MaxSubVectorSum {
         return Math.max(lmax+rmax, Math.max(partionSolutionRecursion(v, l, m), partionSolutionRecursion(v, m+1, r)));
     }
 
+    private static int scanLinearSolution(int[] v) {
+        int maxSoFar = 0;
+        int maxEndingHere = 0;
+        for (int i=0; i<v.length; i++) {
+            maxEndingHere = Math.max(maxEndingHere+v[i], 0);
+            maxSoFar = Math.max(maxEndingHere, maxSoFar);
+        }
+        return maxSoFar;
+    }
+
+
     public static void main(String[] args) {
         long startAt = currentTimeMillis();
 
@@ -68,16 +76,23 @@ public class MaxSubVectorSum {
         print(plainSolution1(v));
         print(plainSolution2(v));
         print(partionSolution(v));
+        print(scanLinearSolution(v));
         int[] v1 = {-31, -41, -59, -26, -53, -58, -2, -93, -23, 84};
         print(plainSolution1(v1));
         print(plainSolution2(v1));
         print(partionSolution(v1));
+        print(scanLinearSolution(v1));
         int[] v2 = {-31, -41, 59, 26, -53, 58, -2, 93, 23, 84};
         print(partionSolution(v2));
+        print(scanLinearSolution(v2));
         int[] v3 = {};
         print(partionSolution(v3));
+        print(scanLinearSolution(v3));
         int[] v4 = {-1};
         print(partionSolution(v4));
+        print(scanLinearSolution(v4));
+        int[] v5 = {-31, -41, -59, -26, -53, 58, -2, -93, -23, 84};
+        print(scanLinearSolution(v5));
 
         long endAt = currentTimeMillis();
         print("Program cost time: " + (float) (endAt - startAt) / 1000 + 's');
